@@ -1,11 +1,20 @@
-import { useState } from 'react'
-import './App.css'
+
 import Canvas from './components/canvas/Canvas'
 
-function App() {
-  const [count, setCount] = useState(0)
+import { ChakraProvider } from '@chakra-ui/react'
+import ToolbarWrapper from './components/toolbar/ToolbarWrapper'
 
-  return <Canvas />
+
+function App() {
+
+
+  return (
+    <ChakraProvider>
+      <Canvas />
+      <ToolbarWrapper></ToolbarWrapper>
+    </ChakraProvider>
+  )
+
 }
 
 export default App
