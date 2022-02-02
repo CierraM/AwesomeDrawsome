@@ -1,13 +1,13 @@
-import { useState } from 'react'
-import './App.css'
+
+import { ChakraProvider } from '@chakra-ui/react'
+import ToolbarWrapper from './components/toolbar/ToolbarWrapper'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
-      
-    </div>
+    <ChakraProvider>
+      <ToolbarWrapper></ToolbarWrapper>
+    </ChakraProvider>
   )
 }
 
