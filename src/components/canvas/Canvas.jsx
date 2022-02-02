@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { izzy } from "../../izzy/main";
+import { izzy } from "../../izzy/";
 
 export default function Canvas({ width = 1920, height = 1080 }) {
 // export default function Canvas({ width = 800, height = 600 }) {
