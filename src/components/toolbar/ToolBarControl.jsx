@@ -19,7 +19,8 @@ const ToolBarControl = props => {
                 fontSize="24px"
                 size="lg"
                 variant="ghost"
-                colorScheme="teal"
+                color="teal.200"
+                _hover={{ color: "teal.500", bg: "white"}}
                 >
             </MenuButton>
             <MenuList>
