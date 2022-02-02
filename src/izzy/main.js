@@ -28,13 +28,13 @@ class Izzy {
             view: this.ref,
             width,
             height,
-            backgroundColor: 0xFFFFFF,
+            backgroundColor: 0xEEEEEE,
             antialias: false
         })
 
         this.artist.init(this)
 
-        this.renderer.render(this.container)
+        this.render()
         this.update()
     }
 
@@ -46,6 +46,12 @@ class Izzy {
         this.shouldRender = true;
 
         this.liveBrushStroke = new BrushStroke(this.test)
+
+        const rect = this.ref.getBoundingClientRect()
+        const scaleX = this.ref.width / rect.width;
+        const scaleY = this.ref.height / rect.height;
+        this.liveBrushStroke.container.scale = { x: scaleX, y: scaleY }
+
         this.container.addChild(this.liveBrushStroke.container)
     }
 
@@ -61,18 +67,22 @@ class Izzy {
         this.container.removeChild(this.liveBrushStroke.container)
         this.container.addChild(sprite)
 
+        this.render()
         this.shouldRender = false;
     }
 
+    render() {
+        this.renderer.render(this.container)
+    }
+
     update() {
-        if (this.shouldRender)  this.renderer.render(this.container)
+        if (this.shouldRender) this.render()
         requestAnimationFrame(this.update.bind(this))
     }
 }
 
 class BrushStroke {
     constructor(brushTip) {
-        // this.path = new paper.Path()
         this.container = new PIXI.Container()
         this.brushTip = brushTip
         this.smoothStroke = new SmoothStroke()
@@ -81,8 +91,6 @@ class BrushStroke {
     }
 
     addNode({ x, y, pressure } = {}) {
-
-        // console.time('addNode')
         const points = this.smoothStroke.addPoint(x, y)
         for (let i = 0; i < points.length; i++) {
             const point = points[i]
@@ -112,12 +120,10 @@ class Artist {
 
     _getRelativePointerPosition(event) {
         const rect = this.canvas.ref.getBoundingClientRect()
-        const scaleX = this.canvas.ref.width / rect.width;
-        const scaleY = this.canvas.ref.height / rect.height;
 
         return {
-            x: (event.clientX - rect.left) * scaleX,
-            y: (event.clientY - rect.top) * scaleY
+            x: (event.clientX - rect.left),
+            y: (event.clientY - rect.top)
         }
     }
 
@@ -138,7 +144,7 @@ class Artist {
         })
         this.canvas.ref.addEventListener('pointermove', (e) => {
             if (this.pointerDown) {
-                const { x, y } = this._getRelativePointerPosition(e)
+                let { x, y } = this._getRelativePointerPosition(e)
                 this.canvas.addBrushNode(x, y, e.pressure)
             }
         })

@@ -56,6 +56,7 @@ export class SmoothStroke {
         const interpolatedPoints = []
         for (let i = 0; i < steps; i++) {
             const point = cardinalSpline(i / (steps - 1), 0.5, A, B, C, D)
+            // const point = { x: lerp(B.x, C.x, i / (steps - 1)), y: lerp(B.y, C.y, i / (steps - 1)) }
             interpolatedPoints.push(point)
         }
         return interpolatedPoints
