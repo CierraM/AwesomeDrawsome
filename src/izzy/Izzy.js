@@ -57,10 +57,9 @@ export class Izzy {
         this.update()
     }
 
-    setBrush(brush) {
-        console.log(brush)
-        brush.tip = this.brushTips[brush.tipIndex]
-        this.brush = brush
+    setBrush(callback) {
+        const brush = callback(this.brush)
+        this.brush = brush.init(this)
     }
 
     addBrushNode(x, y, pressure) {
