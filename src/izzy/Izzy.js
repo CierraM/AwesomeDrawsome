@@ -68,7 +68,6 @@ export class Izzy {
     }
 
     undo() {
-
         if (!this.undoStack.length) return
 
         const sprite = this.undoStack.pop()
@@ -79,7 +78,6 @@ export class Izzy {
     }
 
     redo() {
-
         if (!this.redoStack.length) return
 
         const sprite = this.redoStack.pop()
