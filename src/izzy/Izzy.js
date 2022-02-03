@@ -112,6 +112,7 @@ export class Izzy {
         this.container.removeChild(this.liveBrushStroke.container)
         this.container.addChild(sprite)
         this.undoStack.push(sprite)
+        this.redoStack = []
 
         this.render()
         this.shouldRender = false;

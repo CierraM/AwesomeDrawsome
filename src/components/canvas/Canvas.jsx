@@ -1,9 +1,13 @@
 import { useEffect, useRef } from "react";
+import { useKeys } from "rooks";
 import { izzy } from "../../izzy/";
 
 export default function Canvas({ width = 1920, height = 1080, brush }) {
 // export default function Canvas({ width = 800, height = 600 }) {
     const canvasRef = useRef();
+
+    useKeys(['ControlLeft', 'KeyZ'], () => izzy.undo())
+    useKeys(['ControlLeft', 'KeyY'], () => izzy.redo())
 
     useEffect(() => {
         izzy.init(canvasRef.current, { width, height })
