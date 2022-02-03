@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && cpy --parents ./src ./dist/src",
+    "build": "vite build && cpy --parents ./src ./dist",
     "preview": "vite preview",
     "tunnel": "npm-run-all build --parallel preview tunnel:start",
     "tunnel:start": "wait-on http://localhost:5000/ && lt --host http://loca.lt --port 5000"
