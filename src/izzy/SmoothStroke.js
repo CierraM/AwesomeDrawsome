@@ -4,17 +4,11 @@ export class SmoothStroke {
     constructor() {
         this.points = []
         this.ignorePointThreshold = 3
-        this.spacing = 1.4
+        this.spacing = 2
     }
 
     addPoint(x, y) {
-        // Add new point
-        const point = new Point(x, y)
-        // Ignore new point if the distance to lastPoint is less than the threshold
-        if (this.points.length) {
-            if (point.distanceTo(this.points[this.points.length - 1]) <= this.ignorePointThreshold) return []
-        }
-        this.points.push(point)
+        this.points.push(new Point(x, y))
 
         if (this.points.length === 1) {
             const A = this.points[this.points.length - 1]
@@ -52,11 +46,11 @@ export class SmoothStroke {
 
     _makeCurve(A, B, C, D) {
         const distance = B.distanceTo(C)
-        const steps = distance * this.spacing
+        const steps = Math.floor(distance * this.spacing)
         const interpolatedPoints = []
         for (let i = 0; i < steps; i++) {
-            const point = cardinalSpline(i / (steps - 1), 0.5, A, B, C, D)
             // const point = { x: lerp(B.x, C.x, i / (steps - 1)), y: lerp(B.y, C.y, i / (steps - 1)) }
+            const point = cardinalSpline(i / (steps), 0.5, A, B, C, D)
             interpolatedPoints.push(point)
         }
         return interpolatedPoints

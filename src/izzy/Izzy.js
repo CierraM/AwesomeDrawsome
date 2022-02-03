@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js'
 import { Artist } from './Artist'
+import { defaultBrush } from './Brush'
 import { BrushStroke } from './BrushStroke'
 
 export class Izzy {
@@ -7,7 +8,15 @@ export class Izzy {
         this.ref = null
         this.renderer = null
         this.container = new PIXI.Container()
-        this.test = PIXI.Texture.from('src/izzy/assets/efficiency.png')
+
+        this.brushTips = [
+            PIXI.Texture.from('src/izzy/assets/hard_round.png'),
+            PIXI.Texture.from('src/izzy/assets/pencil.png'),
+            PIXI.Texture.from('src/izzy/assets/flat.png'),
+            PIXI.Texture.from('src/izzy/assets/charcoal.png')
+        ]
+        this.brush = null
+
         this.artist = new Artist(this)
 
         this.width = null
@@ -23,28 +32,50 @@ export class Izzy {
         this.width = width
         this.height = height
 
+        PIXI.settings.FILTER_RESOLUTION = 1
+        PIXI.settings.PRECISION_FRAGMENT = PIXI.PRECISION.HIGH
+        PIXI.settings.MIPMAP_TEXTURES = true
+        PIXI.settings.WRAP_MODE = PIXI.WRAP_MODES.REPEAT
+        PIXI.utils.skipHello()
+
         this.renderer = new PIXI.autoDetectRenderer({
             view: this.ref,
             width,
             height,
             backgroundColor: 0xEEEEEE,
-            antialias: false
+            antialias: true
         })
+        this.renderer.roundPixels = false
 
+        this.setBrush(defaultBrush)
         this.artist.init(this)
 
         this.render()
         this.update()
     }
 
+    setBrush(brush) {
+        console.log(brush)
+        brush.tip = this.brushTips[brush.tipIndex]
+        this.brush = brush
+    }
+
     addBrushNode(x, y, pressure) {
         this.liveBrushStroke.addNode({ x, y, pressure })
+    }
+
+    undo() {
+        
+    }
+
+    redo() {
+        
     }
 
     beginBrushStroke() {
         this.shouldRender = true;
 
-        this.liveBrushStroke = new BrushStroke(this.test)
+        this.liveBrushStroke = new BrushStroke(this.brush)
 
         const rect = this.ref.getBoundingClientRect()
         const scaleX = this.ref.width / rect.width;
