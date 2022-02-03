@@ -22,7 +22,7 @@ const ToolBarControl = props => {
                     icon={props.icon}
                     isRound="true"
                     fontSize="24px"
-                    size="lg"
+                    size={props.size || 'lg'}
                     variant={props.variant || "ghost"}
                     color={props.color || "teal.200"}
                     _hover={{ color: props.color || "teal.500", bg: "white" }}

@@ -16,7 +16,7 @@ const ColorPicker = props => {
       };
     
     return (
-        <ToolBarControl icon={props.icon} variant="solid" color={colorString}>
+        <ToolBarControl icon={props.icon} variant="solid" color={colorString} size="md">
             <SketchPicker
                 color={color.background}
                 onChangeComplete={handleChangeComplete}
