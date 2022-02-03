@@ -1,16 +1,6 @@
 import React from "react";
 import {
-    Box, Image, Flex, Spacer, Center, Menu,
-    MenuButton,
-    MenuList,
-    MenuItem,
-    MenuItemOption,
-    MenuGroup,
-    MenuOptionGroup,
-    MenuDivider,
-    Button,
-    Icon,
-
+    Box, Image, Flex, Spacer
 } from "@chakra-ui/react";
 
 import { FaPaintBrush, FaEraser, FaSave } from 'react-icons/fa'
