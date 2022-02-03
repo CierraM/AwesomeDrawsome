@@ -12,7 +12,6 @@ import {
 
 
 const ToolBarControl = props => {
-    console.log(props.color)
     return (
         <Popover position="top-start">
             <PopoverTrigger

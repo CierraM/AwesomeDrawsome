@@ -1,7 +1,7 @@
 import { clamp } from "./util"
 
 export class Brush {
-    constructor({ tipIndex = 3, size = 10, color = 0x000000, opacity = 1, sizePressure = true, opacityPressure = false } = {}) {
+    constructor({ tipIndex = 1, size = 10, color = 0x000000, opacity = 1, sizePressure = true, opacityPressure = false } = {}) {
         this.tipIndex = tipIndex
         this.tip = null
         this.size = size
