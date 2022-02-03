@@ -10,6 +10,8 @@ import ToolBarControl from "./controls/ToolBarControl";
 import ColorPicker from "./controls/ColorPicker"
 
 
+import logo from '../../assets/awesomeDrawsome-logo.png'
+
 const ToolbarWrapper = (props) => {
     return (
         <Flex w="100%" h="80px" bg="#212121" p="10px" position='fixed' bottom='0px' align="center">
@@ -19,7 +21,7 @@ const ToolbarWrapper = (props) => {
             </Box>
             <ColorPicker icon={<VscCircleLargeFilled />} />
             <Spacer></Spacer>
-            <Image src="/src/assets/awesomeDrawsome-logo.png" alt="logo" height="30px" ml="-30px"></Image>
+            <Image src={logo} draggable="false" alt="logo" height="30px" ml="-30px"></Image>
             <Spacer></Spacer>
             <ToolBarControl icon={<FaSave />} />
         </Flex>
