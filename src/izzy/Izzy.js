@@ -9,6 +9,9 @@ export class Izzy {
         this.renderer = null
         this.container = new PIXI.Container()
 
+        this.undoStack = []
+        this.redoStack = []
+
         this.brushTips = [
             PIXI.Texture.from('src/izzy/assets/hard_round.png'),
             PIXI.Texture.from('src/izzy/assets/pencil.png'),
@@ -65,11 +68,25 @@ export class Izzy {
     }
 
     undo() {
-        
+
+        if (!this.undoStack.length) return
+
+        const sprite = this.undoStack.pop()
+        this.container.removeChild(sprite)
+        this.redoStack.push(sprite)
+
+        this.render()
     }
 
     redo() {
-        
+
+        if (!this.redoStack.length) return
+
+        const sprite = this.redoStack.pop()
+        this.container.addChild(sprite)
+        this.undoStack.push(sprite)
+
+        this.render()
     }
 
     beginBrushStroke() {
@@ -96,6 +113,7 @@ export class Izzy {
         
         this.container.removeChild(this.liveBrushStroke.container)
         this.container.addChild(sprite)
+        this.undoStack.push(sprite)
 
         this.render()
         this.shouldRender = false;
