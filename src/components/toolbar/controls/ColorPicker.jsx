@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import {
-    MenuItem, PopoverContent
-} from "@chakra-ui/react"
 import ToolBarControl from "./ToolBarControl";
 import { SketchPicker } from "react-color";
 import { izzy } from "../../../izzy";
