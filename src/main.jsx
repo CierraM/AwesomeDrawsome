@@ -5,12 +5,12 @@ import ReactDOM from 'react-dom'
 import App from './App'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider>
-      <ChakraProvider>
-        <App />
-      </ChakraProvider>
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Provider>
+            <ChakraProvider>
+                <App />
+            </ChakraProvider>
+        </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
 )
