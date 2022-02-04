@@ -23,6 +23,7 @@ const ToolBarControl = props => {
                     color={props.color || "white"}
                     _hover={{ color: props.color || "grey", bg: "white" }}
                     _focus={{ outline: 0 }}
+                    onClick={props.onClick}
                 />
             </PopoverTrigger>
             <PopoverContent w="auto" border="none" _focus={{ outline: 0}}>
