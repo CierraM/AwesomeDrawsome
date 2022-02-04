@@ -58,7 +58,6 @@ export class Izzy {
     }
 
     setBrush(brush) {
-        console.log(brush)
         brush.tip = this.brushTips[brush.tipIndex]
         this.brush = brush
     }
