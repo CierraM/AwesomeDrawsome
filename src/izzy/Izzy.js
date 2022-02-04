@@ -50,7 +50,7 @@ export class Izzy {
         })
         this.renderer.roundPixels = false
 
-        this.setBrush(defaultBrush)
+        this.setBrush(() => defaultBrush)
         this.artist.init(this)
 
         this.render()
