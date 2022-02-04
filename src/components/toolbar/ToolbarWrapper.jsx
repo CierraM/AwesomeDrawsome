@@ -4,10 +4,8 @@ import {
 } from "@chakra-ui/react";
 
 import { FaPaintBrush, FaEraser, FaSave } from 'react-icons/fa'
-import { VscCircleLargeFilled } from 'react-icons/vsc'
 
 import ToolBarControl from "./controls/ToolBarControl";
-import ColorPicker from "./controls/ColorPicker"
 import { useAtom } from "jotai";
 
 import logo from '../../assets/awesomeDrawsome-logo.png'
