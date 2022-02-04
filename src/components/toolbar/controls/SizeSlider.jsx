@@ -9,15 +9,14 @@ const SizeSlider = props => {
 
     useEffect(() => {
         izzy.setBrush(izzy.brush.update({ size: currentSize }))
-        console.log(currentSize)
     }, [currentSize])
 
     const sizeChangeHandler = value => {
-        setCurrentSize(value* 3);
+        setCurrentSize(value * 3);
     }
     return (
-        <Box mt="25px" ml="10px" mr="10px" mb="10px">
-        <Slider orientation="vertical" onChange={sizeChangeHandler}>
+        <Box boxShadow={props.boxShadow}>
+            <Slider orientation={props.orientation} onChange={sizeChangeHandler} w={props.w} h={props.h} m="10px auto" display="block">
             <SliderTrack>
                 <SliderFilledTrack bg="#212121"/>
             </SliderTrack>

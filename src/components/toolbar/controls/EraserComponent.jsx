@@ -10,8 +10,8 @@ const EraserComponent = (props) => {
         setIsErasing(true)
     }
     return (
-        <ToolBarControl icon={props.icon} onClick={eraserChoiceHandler} variant={props.variant} color={props.color}>
-            <SizeSlider />
+        <ToolBarControl icon={props.icon} onClick={eraserChoiceHandler} variant={props.variant} color={props.color} w="20px" h="200px" noClose={true}>
+            <SizeSlider orientation="vertical" h="200px" w="40px" boxShadow="base"/>
         </ToolBarControl>
     )
 }
