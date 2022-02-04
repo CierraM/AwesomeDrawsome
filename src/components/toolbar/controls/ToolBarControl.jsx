@@ -10,7 +10,7 @@ import {
 
 const ToolBarControl = props => {
     return (
-        <Popover position="top-start">
+        <Popover position="top-start" {...props }>
             <PopoverTrigger
             >
                 <IconButton
@@ -20,9 +20,9 @@ const ToolBarControl = props => {
                     fontSize="24px"
                     size={props.size || 'lg'}
                     variant={props.variant || "ghost"}
-                    color={props.color || "teal.200"}
-                    _hover={{ color: props.color || "teal.500", bg: "white" }}
-                    _focus={{ outline: 0}}
+                    color={props.color || "white"}
+                    _hover={{ color: props.color || "grey", bg: "white" }}
+                    _focus={{ outline: 0 }}
                 />
             </PopoverTrigger>
             <PopoverContent w="auto" border="none" _focus={{ outline: 0}}>

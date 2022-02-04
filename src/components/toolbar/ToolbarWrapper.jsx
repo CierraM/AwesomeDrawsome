@@ -11,15 +11,15 @@ import ColorPicker from "./controls/ColorPicker"
 
 
 import logo from '../../assets/awesomeDrawsome-logo.png'
+import BrushComponent from "./controls/BrushComponent";
 
 const ToolbarWrapper = (props) => {
     return (
         <Flex w="100%" h="80px" bg="#212121" p="10px" position='fixed' bottom='0px' align="center">
             <Box mr="30px">
-                <ToolBarControl icon={<FaPaintBrush />} />
+                <BrushComponent icon={<FaPaintBrush />} />
                 <ToolBarControl icon={<FaEraser />} />
             </Box>
-            <ColorPicker icon={<VscCircleLargeFilled />} />
             <Spacer></Spacer>
             <Image src={logo} draggable="false" alt="logo" height="30px" ml="-30px"></Image>
             <Spacer></Spacer>
