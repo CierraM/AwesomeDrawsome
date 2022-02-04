@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react"
 
 
-const ToolBarControl = props => {
+const ToolBarControl = (props) => {
     return (
         <Popover position="top-start" {...props }>
             <PopoverTrigger
