@@ -21,7 +21,7 @@ const ToolbarWrapper = (props) => {
         <Flex w="100%" h="80px" bg="#212121" p="10px" position='fixed' bottom='0px' align="center">
             <Box mr="30px">
                 <BrushComponent icon={<FaPaintBrush />} variant={isErasing? 'ghost': 'solid' }/>
-                <EraserComponent icon={<FaEraser />} variant={isErasing ? 'solid' : 'ghost'}/>
+                <EraserComponent icon={<FaEraser />} variant={isErasing ? 'solid' : 'ghost'} color={isErasing && 'grey'}/>
             </Box>
             <Spacer></Spacer>
             <Image src={logo} draggable="false" alt="logo" height="30px" ml="-30px"></Image>
