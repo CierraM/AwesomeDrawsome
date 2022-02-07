@@ -12,6 +12,7 @@ import logo from '../../assets/awesomeDrawsome-logo.png'
 import BrushComponent from "./controls/BrushComponent";
 import EraserComponent from "./controls/EraserComponent";
 import { isErasingAtom } from "../../store/atoms";
+import { izzy } from "../../izzy";
 
 const ToolbarWrapper = (props) => {
     const [isErasing, setIsErasing] = useAtom(isErasingAtom)
@@ -24,7 +25,7 @@ const ToolbarWrapper = (props) => {
             <Spacer></Spacer>
             <Image src={logo} draggable="false" alt="logo" height="30px" ml="-30px"></Image>
             <Spacer></Spacer>
-            <ToolBarControl icon={<FaSave />} />
+            <ToolBarControl onClick={() => { izzy.exportToImage() }} icon={<FaSave />} />
         </Flex>
     )
 }

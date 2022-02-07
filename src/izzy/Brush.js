@@ -2,8 +2,8 @@ import * as PIXI from 'pixi.js'
 import { clamp } from "./util"
 
 export class Brush {
-    constructor({ tipIndex = 1, size = 10, color = "#000000", opacity = 1, sizePressure = true, opacityPressure = false } = {}) {
-        this.tipIndex = tipIndex
+    constructor({ tipId = 1, size = 10, color = "#000000", opacity = 1, sizePressure = true, opacityPressure = false } = {}) {
+        this.tipIndex = tipId
         this.tip = null
         this.size = size
         this.sizeVariance = size
