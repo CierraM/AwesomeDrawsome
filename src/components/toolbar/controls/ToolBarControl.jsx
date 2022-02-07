@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react"
 
 
-const ToolBarControl = props => {
+const ToolBarControl = (props) => {
     return (
         <Popover position="top-start" {...props }>
             <PopoverTrigger
@@ -26,8 +26,8 @@ const ToolBarControl = props => {
                     onClick={props.onClick}
                 />
             </PopoverTrigger>
-            <PopoverContent w="auto" border="none" _focus={{ outline: 0}}>
-            <PopoverCloseButton />
+            <PopoverContent w="auto" border="none" _focus={{ outline: 0}} boxShadow="md">
+                {props.noClose || <PopoverCloseButton />}
                 {props.children}
             </PopoverContent>
         </Popover>
