@@ -1,16 +1,25 @@
+import * as PIXI from 'pixi.js'
 import { clamp } from "./util"
 
 export class Brush {
-    constructor({ tipIndex = 1, size = 10, color = 0x000000, opacity = 1, sizePressure = true, opacityPressure = false } = {}) {
-        this.tipIndex = tipIndex
+    constructor({ tipId = 1, size = 10, color = "#000000", opacity = 1, sizePressure = true, opacityPressure = false, isErasing = false } = {}) {
+        this.tipIndex = tipId
         this.tip = null
         this.size = size
         this.sizeVariance = size
         this.sizeMin = clamp(this.size - this.sizeVariance, 0, this.size)
         this.color = color
+        this.colorHex = null
         this.opacity = opacity
         this.sizePressure = sizePressure
         this.opacityPressure = opacityPressure
+        this.isErasing = isErasing
+    }
+
+    init(izzy) {
+        this.tip = izzy.brushTips[this.tipIndex]
+        this.colorHex = PIXI.utils.string2hex(this.color)
+        return this;
     }
 
     update(properties) {

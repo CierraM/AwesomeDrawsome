@@ -29,7 +29,7 @@ export class BrushStroke {
             const sprite = PIXI.Sprite.from(this.brush.tip)
             sprite.position.set(point.x, point.y)
             sprite.anchor.set(0.5)
-            sprite.tint = this.brush.color
+            sprite.tint = this.brush.colorHex
             sprite.alpha = brushAlpha
             sprite.scale.set(brushSize)
             this.container.addChild(sprite)

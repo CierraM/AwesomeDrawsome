@@ -50,16 +50,39 @@ export class Izzy {
         })
         this.renderer.roundPixels = false
 
-        this.setBrush(defaultBrush)
+        this.setBrush(() => defaultBrush)
         this.artist.init(this)
 
         this.render()
         this.update()
     }
 
-    setBrush(brush) {
-        brush.tip = this.brushTips[brush.tipIndex]
-        this.brush = brush
+    getBrushTips() {
+        return this.brushTips.map((url, id) => { id, url })
+    }
+
+    exportToImage() {
+        const renderTexture = PIXI.RenderTexture.create({
+            width: this.width,
+            height: this.height
+        })
+        this.renderer.render(this.container, { renderTexture })
+        
+        const sprite = new PIXI.Sprite(renderTexture)
+
+        this.renderer.extract.canvas(sprite).toBlob((blob) => {
+            const a = document.createElement('a')
+            document.body.append(a)
+            a.download = "image.png"
+            a.href = URL.createObjectURL(blob)
+            a.click()
+            a.remove()
+        }, 'image/png')
+    }
+
+    setBrush(callback) {
+        const brush = callback(this.brush)
+        this.brush = brush.init(this)
     }
 
     addBrushNode(x, y, pressure) {

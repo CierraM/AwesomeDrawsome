@@ -1,13 +1,13 @@
 import ToolBarControl from "./ToolBarControl"
 import SizeSlider from "./SizeSlider"
 import { useAtom } from "jotai"
-import { isErasingAtom } from "../../../contexts/atoms"
+import { brushAtom } from "../../../store/atoms"
 
 const EraserComponent = (props) => {
-    const [isErasing, setIsErasing] = useAtom(isErasingAtom)
+    const [brush, setBrush] = useAtom(brushAtom);
 
     const eraserChoiceHandler = () => {
-        setIsErasing(true)
+        setBrush(brush => brush.update({isErasing: !brush.isErasing}))
     }
     return (
         <ToolBarControl icon={props.icon} onClick={eraserChoiceHandler} variant={props.variant} color={props.color} w="20px" h="200px" noClose={true}>

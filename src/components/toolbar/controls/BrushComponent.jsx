@@ -3,25 +3,25 @@ import { Flex, Box, Grid, SimpleGrid, Image, Spacer, Switch, Text} from "@chakra
 import ColorPicker from "./ColorPicker";
 import SizeSlider from "./SizeSlider";
 import ToolBarControl from "./ToolBarControl";
-import { useContext } from "react";
 import { useAtom } from "jotai";
-import { colorAtom, isErasingAtom, usePressureAtom } from "../../../contexts/atoms";
+
+import { brushAtom } from "../../../store/atoms";
 
 const BrushComponent = props => {
-    const [currentColor, setCurrentColor] = useAtom(colorAtom)
-    const [isErasing, setIsErasing] = useAtom(isErasingAtom)
-    const [isUsePressure, setIsUsePressure] = useAtom(usePressureAtom)
+    const [brush, setBrush] = useAtom(brushAtom)
 
-    const brushChoiceHandler = () => {
-        setIsErasing(false)
+    const onBrushActivate = () => {
+        setBrush(prev => brush.update({isErasing: false}))
     }
 
     const pressureChoiceHandler = (e) => {
-        setIsUsePressure(e.target.checked)
+        setBrush(brush => brush.update({sizePressure: !brush.sizePressure}))
     }
 
     return (
-        <ToolBarControl icon={props.icon} color={currentColor} variant={props.variant} onClick={brushChoiceHandler} noClose={true}>
+
+        <ToolBarControl icon={props.icon} color={brush.color} variant={props.variant} onClick={onBrushActivate} noClose={true} >
+
             <Flex>
                 <ColorPicker />
                 <Flex p="10px" direction="column">

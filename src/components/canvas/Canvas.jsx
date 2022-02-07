@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useKeys } from "rooks";
 import { izzy } from "../../izzy/";
 
-export default function Canvas({ width = 1920, height = 1080, brush }) {
+export default function Canvas({ width = 1920, height = 1080 }) {
     const canvasRef = useRef();
 
     useKeys(['ControlLeft', 'KeyZ'], () => izzy.undo())
@@ -11,10 +11,6 @@ export default function Canvas({ width = 1920, height = 1080, brush }) {
     useEffect(() => {
         izzy.init(canvasRef.current, { width, height })
     }, [canvasRef])
-
-    useEffect(() => {
-        if (brush) izzy.setBrush(brush)
-    }, [brush])
 
     return (
         <div style={{ height: '100%', display: 'grid' }}>
