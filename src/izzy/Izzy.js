@@ -25,7 +25,7 @@ export class Izzy {
         this.width = null
         this.height = null
 
-        this.backgroundColor = 0xEEEEEE
+        this.backgroundColor = 0xFFFFFF
 
         this.liveBrushStroke = null
         this.shouldRender = false;
