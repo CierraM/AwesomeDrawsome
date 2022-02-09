@@ -89,6 +89,7 @@ export class Izzy {
     setBrush(callback) {
         const brush = callback(this.brush)
         this.brush = brush.init(this)
+        console.log(this.brush)
     }
 
     addBrushNode(x, y, pressure) {
