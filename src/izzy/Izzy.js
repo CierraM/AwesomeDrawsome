@@ -45,7 +45,7 @@ export class Izzy {
             view: this.ref,
             width,
             height,
-            backgroundColor: 0xEEEEEE,
+            backgroundColor: 0xFFFFFF,
             antialias: true
         })
         this.renderer.roundPixels = false
