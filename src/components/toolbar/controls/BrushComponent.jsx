@@ -1,10 +1,11 @@
 
-import { Flex, Box, Grid, SimpleGrid, Image, Spacer, Switch, Text } from "@chakra-ui/react";
+import { Flex, SimpleGrid, Spacer, Switch, Text } from "@chakra-ui/react";
 import ColorPicker from "./ColorPicker";
 import SizeSlider from "./SizeSlider";
 import ToolBarControl from "./ToolBarControl";
+import TipChoices from "./TipChoices";
 import { useAtom } from "jotai";
-import { izzy } from "../../../izzy";
+
 import { brushAtom } from "../../../store/atoms";
 import { useState } from "react";
 
@@ -18,7 +19,7 @@ const BrushComponent = props => {
         }
         setBrush(prev => brush.update({ isErasing: false }))
     }
-    
+
     const onClose = () => {
         setDrawPanelIsOpen(false)
     }
@@ -27,9 +28,6 @@ const BrushComponent = props => {
         setBrush(brush => brush.update({ sizePressure: !brush.sizePressure }))
     }
 
-    const tipChoices = izzy.getBrushTips().map(tip => {
-        return <Image src={tip.url} key={tip.id} maxW="5rem" borderRadius="100%" filter="invert(1)"></Image>
-    })
 
     return (
 
@@ -39,16 +37,16 @@ const BrushComponent = props => {
             variant={props.variant}
             onClick={onBrushActivate}
             noClose={true}
-            isOpen={drawPanelIsOpen} 
+            isOpen={drawPanelIsOpen}
             onClose={onClose}
-            >
+        >
 
             <Flex>
                 <ColorPicker />
                 <Flex p="10px" direction="column">
                     <Text color="grey">Brush</Text>
                     <SimpleGrid columns="2" spacing="4">
-                        {tipChoices}
+                        <TipChoices onSelect={onClose}/>
                     </SimpleGrid>
                     <Spacer />
                     <Text color="grey">Size</Text>
