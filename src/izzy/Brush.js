@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js'
 import { clamp } from "./util"
 
 export class Brush {
-    constructor({ tipId = 1, size = 10, color = "#000000", opacity = 1, sizePressure = true, opacityPressure = false, isErasing = false } = {}) {
+    constructor({ tipId = 1, size = 50, color = "#000000", opacity = 1, sizePressure = true, opacityPressure = false, isErasing = false } = {}) {
         this.tipIndex = tipId
         this.tip = null
         this.size = size

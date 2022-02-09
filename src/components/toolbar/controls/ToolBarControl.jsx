@@ -25,7 +25,7 @@ const ToolBarControl = (props) => {
                     onClick={props.onClick}
                 />
             </PopoverTrigger>
-            <PopoverContent w="auto" border="none" _focus={{ outline: 0}} boxShadow="md">
+            <PopoverContent w="auto" border="none" _focus={{ outline: 0}} boxShadow="0px 3px 12px 1px rgba(0,0,0,0.45)">
                 {props.noClose || <PopoverCloseButton />}
                 {props.children}
             </PopoverContent>
