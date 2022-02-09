@@ -61,6 +61,14 @@ export class Izzy {
         this.update()
     }
 
+    isDirty() {
+        return !!this.container.children.length
+    }
+
+    clear() {
+        this.container.removeChildren()
+    }
+
     getBrushTips() {
         return this.brushTips.map((texture, id) => {
             return { id, url: texture.baseTexture.cacheId }
