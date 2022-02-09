@@ -25,6 +25,8 @@ export class Izzy {
         this.width = null
         this.height = null
 
+        this.backgroundColor = 0xFFFFFF
+
         this.liveBrushStroke = null
         this.shouldRender = false;
     }
@@ -45,7 +47,7 @@ export class Izzy {
             view: this.ref,
             width,
             height,
-            backgroundColor: 0xEEEEEE,
+            backgroundColor: this.backgroundColor,
             antialias: true
         })
         this.renderer.roundPixels = false
@@ -112,7 +114,7 @@ export class Izzy {
     beginBrushStroke() {
         this.shouldRender = true;
 
-        this.liveBrushStroke = new BrushStroke(this.brush)
+        this.liveBrushStroke = new BrushStroke(this.brush, this)
 
         const rect = this.ref.getBoundingClientRect()
         const scaleX = this.ref.width / rect.width;
