@@ -11,8 +11,7 @@ import {
 const ToolBarControl = (props) => {
     return (
         <Popover position="top-start" {...props }>
-            <PopoverTrigger
-            >
+            <PopoverTrigger>
                 <IconButton
                     m={1}
                     icon={props.icon}

@@ -58,7 +58,9 @@ export class Izzy {
     }
 
     getBrushTips() {
-        return this.brushTips.map((url, id) => { id, url })
+        return this.brushTips.map((texture, id) => {
+            return { id, url: texture.baseTexture.cacheId }
+        })
     }
 
     exportToImage() {
