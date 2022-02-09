@@ -3,7 +3,7 @@ import { clamp } from "./util"
 
 export class Brush {
     constructor({ tipId = 1, size = 50, color = "#000000", opacity = 1, sizePressure = true, opacityPressure = false, isErasing = false } = {}) {
-        this.tipIndex = tipId
+        this.tipId = tipId
         this.tip = null
         this.size = size
         this.sizeVariance = size
@@ -17,13 +17,16 @@ export class Brush {
     }
 
     init(izzy) {
-        this.tip = izzy.brushTips[this.tipIndex]
+        this.tip = izzy.brushTips[this.tipId]
         this.colorHex = PIXI.utils.string2hex(this.color)
         return this;
     }
 
     update(properties) {
-        return new Brush({ ...this, ...properties })
+        const brush = new Brush({ ...this, ...properties })
+        console.log({properties, brush})
+
+        return brush
     }
 }
 

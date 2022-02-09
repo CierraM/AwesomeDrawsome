@@ -7,12 +7,12 @@ import { brushAtom } from "../../../store/atoms";
 
 const TipChoices = (props) => {
     const [brush, setBrush] = useAtom(brushAtom)
-    
+
     const tipChoices = izzy.getBrushTips().map(tip => {
-        const setBrushTip = (e) => {
-            setBrush(prev => brush.update({ tipId: tip.id }))
-            props.onSelect()
-        }
+        // const setBrushTip = (e) => {
+        //     setBrush(brush => brush.update({ tipId: tip.id }))
+        //     props.onSelect()
+        // }
         return (
             <Image
                 src={tip.url}
@@ -21,7 +21,10 @@ const TipChoices = (props) => {
                 borderRadius="100%"
                 filter="invert(1)"
                 cursor="pointer"
-                onClick={setBrushTip}
+                onClick={() => {
+                    setBrush(brush => brush.update({ tipId: tip.id }));
+                    props.onSelect()
+                }}
             ></Image>
         )
     })

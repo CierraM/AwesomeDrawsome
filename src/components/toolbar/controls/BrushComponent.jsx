@@ -16,8 +16,9 @@ const BrushComponent = props => {
     const onBrushActivate = () => {
         if (!brush.isErasing) {
             setDrawPanelIsOpen(true)
+            return
         }
-        setBrush(prev => brush.update({ isErasing: false }))
+        setBrush(brush => brush.update({ isErasing: false }))
     }
 
     const onClose = () => {
