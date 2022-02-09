@@ -47,7 +47,9 @@ export class Izzy {
             view: this.ref,
             width,
             height,
+
             backgroundColor: this.backgroundColor,
+
             antialias: true
         })
         this.renderer.roundPixels = false
@@ -60,7 +62,9 @@ export class Izzy {
     }
 
     getBrushTips() {
-        return this.brushTips.map((url, id) => { id, url })
+        return this.brushTips.map((texture, id) => {
+            return { id, url: texture.baseTexture.cacheId }
+        })
     }
 
     exportToImage() {

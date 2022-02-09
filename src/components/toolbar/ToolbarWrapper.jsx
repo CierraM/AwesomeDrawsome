@@ -21,18 +21,16 @@ const ToolbarWrapper = (props) => {
         <Flex w="100%" h="80px" bg="#212121" p="10px" position='fixed' bottom='0px' align="center">
             <Box mr="30px">
                 <BrushComponent icon={<FaPaintBrush />} variant={!brush.isErasing ? 'solid' : 'ghost'} />
-                <EraserComponent icon={<FaEraser />} variant={brush.isErasing ? 'solid' : 'ghost'} color={brush.isErasing && 'grey'}/>
+                <EraserComponent icon={<FaEraser />} variant={brush.isErasing ? 'solid' : 'ghost'} color={brush.isErasing && 'grey'} />
             </Box>
             <Spacer></Spacer>
             <Image src={logo} draggable="false" alt="logo" height="30px"></Image>
             <Spacer></Spacer>
             <Box mr="20px">
-                <Tooltip label="undo">
-                    <ToolBarControl icon={<IoArrowUndoSharp />} onClick={ () => izzy.undo()}/>
-                </Tooltip>
-                <Tooltip label="redo">
-                    <ToolBarControl icon={<IoArrowRedoSharp />} onClick={() => izzy.redo()}/>
-                </Tooltip>
+
+                <ToolBarControl icon={<IoArrowUndoSharp />} onClick={() => izzy.undo()} />
+                <ToolBarControl icon={<IoArrowRedoSharp />} onClick={() => izzy.redo()} />
+
             </Box>
             <ToolBarControl onClick={() => { izzy.exportToImage() }} icon={<FaSave />} />
         </Flex>

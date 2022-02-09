@@ -8,11 +8,21 @@ const SizeSlider = (props) => {
     const sizeChangeHandler = size => {
         setBrush(brush => brush.update({ size }))
     }
-
+    console.log(brush.size)
     return (
 
         <Box mt="25px" ml="10px" mr="10px" mb="10px" boxShadow={props.boxShadow}>
-            <Slider min={1} max={300} orientation={props.orientation} value={brush.size} onChange={sizeChangeHandler} w={props.w} h={props.h} m="10px auto" display="block">
+            <Slider
+                min={1}
+                max={300}
+                orientation={props.orientation}
+                value={brush.size}
+                onChange={sizeChangeHandler}
+                w={props.w}
+                h={props.h}
+                m="10px auto"
+                display="block"
+            >
                 <SliderTrack>
                     <SliderFilledTrack bg="#212121" />
                 </SliderTrack>

@@ -11,8 +11,7 @@ import {
 const ToolBarControl = (props) => {
     return (
         <Popover position="top-start" {...props }>
-            <PopoverTrigger
-            >
+            <PopoverTrigger>
                 <IconButton
                     m={1}
                     icon={props.icon}
@@ -26,7 +25,7 @@ const ToolBarControl = (props) => {
                     onClick={props.onClick}
                 />
             </PopoverTrigger>
-            <PopoverContent w="auto" border="none" _focus={{ outline: 0}} boxShadow="md">
+            <PopoverContent w="auto" border="none" _focus={{ outline: 0}} boxShadow="0px 3px 12px 1px rgba(0,0,0,0.45)">
                 {props.noClose || <PopoverCloseButton />}
                 {props.children}
             </PopoverContent>
