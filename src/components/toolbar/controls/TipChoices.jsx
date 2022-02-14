@@ -17,10 +17,12 @@ const TipChoices = (props) => {
             <Image
                 src={tip.url}
                 key={tip.id}
-                maxW="5rem"
+                // maxW="5rem"
                 borderRadius="100%"
                 filter="invert(1)"
                 cursor="pointer"
+                alignSelf="center"
+                justifySelf="center"
                 onClick={() => {
                     setBrush(brush => brush.update({ tipId: tip.id }));
                     props.onSelect()
