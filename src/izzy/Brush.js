@@ -24,7 +24,6 @@ export class Brush {
 
     update(properties) {
         const brush = new Brush({ ...this, ...properties })
-        console.log({properties, brush})
 
         return brush
     }
