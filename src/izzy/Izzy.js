@@ -97,7 +97,6 @@ export class Izzy {
     setBrush(callback) {
         const brush = callback(this.brush)
         this.brush = brush.init(this)
-        console.log(this.brush)
     }
 
     addBrushNode(x, y, pressure) {
@@ -172,8 +171,6 @@ export class Izzy {
         this.container.addChild(canvasSprite)
         this.undoStack.push(strokeSprite)
         this.redoStack = []
-        
-        console.log(this.container)
 
         this.shouldRender = false;
         this.render()
