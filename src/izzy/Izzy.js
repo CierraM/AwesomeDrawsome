@@ -104,14 +104,28 @@ export class Izzy {
         this.liveBrushStroke.addNode({ x, y, pressure })
     }
 
+    redrawUndoStack() {
+        const canvasTexture = PIXI.RenderTexture.create({
+            width: this.width,
+            height: this.height
+        })
+        const tempContainer = new PIXI.Container()
+        tempContainer.addChild(...this.undoStack)
+        this.renderer.render(tempContainer, { renderTexture: canvasTexture })
+        const canvasSprite = new PIXI.Sprite(canvasTexture)
+
+        this.clear()
+        this.container.addChild(canvasSprite)
+        this.render()
+    }
+
     undo() {
         if (!this.undoStack.length) return
 
         const sprite = this.undoStack.pop()
-        this.container.removeChild(sprite)
         this.redoStack.push(sprite)
 
-        this.render()
+        if (this.undoStack.length) this.redrawUndoStack()
     }
 
     redo() {
@@ -120,6 +134,8 @@ export class Izzy {
         const sprite = this.redoStack.pop()
         this.container.addChild(sprite)
         this.undoStack.push(sprite)
+
+        if (this.undoStack.length) this.redrawUndoStack()
 
         this.render()
     }
@@ -138,21 +154,29 @@ export class Izzy {
     }
 
     endBrushStroke() {
-        const renderTexture = PIXI.RenderTexture.create({
+        const canvasTexture = PIXI.RenderTexture.create({
             width: this.width,
             height: this.height
         })
-        this.renderer.render(this.liveBrushStroke.container, { renderTexture })
-        
-        const sprite = new PIXI.Sprite(renderTexture)
-        
-        this.container.removeChild(this.liveBrushStroke.container)
-        this.container.addChild(sprite)
-        this.undoStack.push(sprite)
-        this.redoStack = []
+        const strokeTexture = PIXI.RenderTexture.create({
+            width: this.width,
+            height: this.height
+        })
+        this.renderer.render(this.liveBrushStroke.container, { renderTexture: strokeTexture })
+        const strokeSprite = new PIXI.Sprite(strokeTexture)
+        this.renderer.render(this.container, { renderTexture: canvasTexture })
+        const canvasSprite = new PIXI.Sprite(canvasTexture)
 
-        this.render()
+        this.clear()
+        
+        this.container.addChild(canvasSprite)
+        this.undoStack.push(strokeSprite)
+        this.redoStack = []
+        
+        console.log(this.container)
+
         this.shouldRender = false;
+        this.render()
     }
 
     render() {
