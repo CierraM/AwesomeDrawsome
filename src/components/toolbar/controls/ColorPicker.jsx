@@ -15,7 +15,7 @@ const ColorPicker = () => {
 
     return (
         <SketchPicker
-            color={color}
+            color={color.rgb}
             onChange={setColor}
             onChangeComplete={handleChangeComplete}
             className="no-shadow"

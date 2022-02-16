@@ -9,8 +9,7 @@ const ClearScreenComponent = (props) => {
 
     const clearScreenHandler = () => {
         setPanelIsOpen(false)
-        izzy.clear();
-        izzy.render();
+        izzy.fullClear()
     }
 
     const closePanelHandler = () => {
